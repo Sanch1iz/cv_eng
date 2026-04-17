@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oleksandr Yablonskyi — AI Developer & Automation Engineer</title>
+  <meta name="description" content="Resume of Oleksandr Yablonskyi — AI Developer, AI Engineer, Business Process Automation">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: rgba(255, 255, 255, 0.03);
+      --bg-card-hover: rgba(255, 255, 255, 0.06);
+      --bg-glass: rgba(255, 255, 255, 0.05);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(99, 102, 241, 0.3);
+      --text-primary: #f0f0f5;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-1: #6366f1;
+      --accent-2: #8b5cf6;
+      --accent-3: #a78bfa;
+      --accent-gradient: linear-gradient(135deg, #6366f1, #8b5cf6, #a78bfa);
+      --accent-gradient-h: linear-gradient(90deg, #6366f1, #8b5cf6, #a78bfa);
+      --success: #34d399;
+      --warning: #fbbf24;
+      --radius: 16px;
+      --radius-sm: 10px;
+      --radius-xs: 6px;
+      --shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 40px rgba(99, 102, 241, 0.15);
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ===== ANIMATED BACKGROUND ===== */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-orb--1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent);
+      top: -200px; left: -100px;
+      animation: orbFloat 20s ease-in-out infinite;
+    }
+    .bg-orb--2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent);
+      bottom: -150px; right: -100px;
+      animation: orbFloat 25s ease-in-out infinite reverse;
+    }
+    .bg-orb--3 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(167, 139, 250, 0.08), transparent);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: orbFloat 18s ease-in-out infinite 5s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.05); }
+      50% { transform: translate(-20px, 30px) scale(0.95); }
+      75% { transform: translate(40px, 20px) scale(1.02); }
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== FADE-IN ANIMATION ===== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 0.7s ease forwards;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in:nth-child(1) { animation-delay: 0.1s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.3s; }
+    .fade-in:nth-child(4) { animation-delay: 0.4s; }
+    .fade-in:nth-child(5) { animation-delay: 0.5s; }
+    .fade-in:nth-child(6) { animation-delay: 0.6s; }
+    .fade-in:nth-child(7) { animation-delay: 0.7s; }
+
+    /* ===== HEADER ===== */
+    .header {
+      padding: 72px 0 48px;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header__photo-wrapper {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      padding: 4px;
+      background: var(--accent-gradient);
+      margin-bottom: 28px;
+      box-shadow: 0 0 40px rgba(99, 102, 241, 0.25), 0 0 80px rgba(139, 92, 246, 0.1);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .header__photo-wrapper:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 60px rgba(99, 102, 241, 0.35), 0 0 100px rgba(139, 92, 246, 0.15);
+    }
+    .header__photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      background: var(--bg-primary);
+    }
+
+    .header__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-accent);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--accent-3);
+      letter-spacing: 0.05em;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+    .header__badge::before {
+      content: '';
+      width: 8px; height: 8px;
+      background: var(--success);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+
+    .header__name {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .header__title {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .header__summary {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* ===== CONTACT PILLS ===== */
+    .contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .contact-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--transition);
+      backdrop-filter: blur(8px);
+    }
+    .contact-pill:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-glow);
+    }
+    .contact-pill svg {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+    }
+
+    .lang-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      padding: 48px 0;
+    }
+
+    .section__title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent-3);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section__title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ===== DIVIDER ===== */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
+      margin: 0;
+    }
+
+    /* ===== SKILLS GRID ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+
+    .skill-card {
+      padding: 16px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent-gradient);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    .skill-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-glow);
+    }
+    .skill-card:hover::before { opacity: 1; }
+
+    .skill-card__icon {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+    .skill-card__name {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    /* ===== HIGHLIGHT - AI DEVELOPMENT ===== */
+    .highlight-card {
+      padding: 28px 32px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(139, 92, 246, 0.05));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius);
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .highlight-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent-gradient-h);
+    }
+    .highlight-card__title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .highlight-card__text {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .highlight-card__text ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+    .highlight-card__text ul li {
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .highlight-card__text ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    /* ===== TECH TAGS ===== */
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      padding: 5px 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .tag:hover {
+      border-color: var(--border-accent);
+      color: var(--accent-3);
+      background: rgba(99, 102, 241, 0.08);
+    }
+    .tag--accent {
+      border-color: var(--border-accent);
+      color: var(--accent-3);
+      background: rgba(99, 102, 241, 0.06);
+    }
+
+    /* ===== TECH CATEGORIES ===== */
+    .tech-category {
+      margin-bottom: 20px;
+    }
+    .tech-category__label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    /* ===== STATS ===== */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 0;
+    }
+    .stat-card {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      text-align: center;
+      transition: var(--transition);
+    }
+    .stat-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-3px);
+    }
+    .stat-card__number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-card__label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ===== EXPERIENCE ===== */
+    .exp-card {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .exp-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-glow);
+    }
+    .exp-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .exp-card__role {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .exp-card__company {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--accent-3);
+      margin-top: 2px;
+    }
+    .exp-card__date {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 4px 12px;
+      background: var(--bg-glass);
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .exp-card__desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .exp-card__desc ul {
+      list-style: none;
+      margin-top: 8px;
+    }
+    .exp-card__desc ul li {
+      padding: 3px 0 3px 20px;
+      position: relative;
+    }
+    .exp-card__desc ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    /* ===== CASES ===== */
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 16px;
+    }
+    .case-card {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .case-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: var(--shadow-glow);
+      transform: translateY(-3px);
+    }
+    .case-card__title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .case-card__desc {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .case-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 14px;
+    }
+    .case-card__tags .tag {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-card {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+    .edu-card__degree {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+    .edu-card__school {
+      font-size: 0.85rem;
+      color: var(--accent-3);
+      margin-bottom: 4px;
+    }
+    .edu-card__meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== MOTIVATION LETTER ===== */
+    .motivation {
+      padding: 32px;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(139, 92, 246, 0.04));
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+    .motivation::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--accent-gradient-h);
+    }
+    .motivation__title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+    .motivation__text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .motivation__text p {
+      margin-bottom: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .footer__text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== PORTFOLIO LINK ===== */
+    .portfolio-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--accent-gradient);
+      border-radius: 100px;
+      color: white;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: var(--transition);
+      margin-top: 16px;
+    }
+    .portfolio-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+    }
+
+    /* ===== PRINT STYLES ===== */
+    @media print {
+      body { background: white; color: #1a1a1a; }
+      .bg-grid, .bg-orb { display: none; }
+      .header__name { -webkit-text-fill-color: #6366f1; }
+      .stat-card__number { -webkit-text-fill-color: #6366f1; }
+      .section__title { color: #6366f1; }
+      .contact-pill, .tag, .skill-card, .exp-card, .case-card, .stat-card, .edu-card, .motivation, .highlight-card {
+        border-color: #e5e7eb;
+        background: #f9fafb;
+      }
+      .contact-pill:hover, .tag:hover, .skill-card:hover, .exp-card:hover, .case-card:hover, .stat-card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    /* ===== RESPONSIVE — TABLET ===== */
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .header { padding: 56px 0 36px; }
+      .header__name { font-size: 2.2rem; }
+      .section { padding: 36px 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .cases-grid { grid-template-columns: 1fr; }
+      .exp-card__header { flex-direction: column; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .highlight-card { padding: 22px; }
+      .exp-card { padding: 22px; }
+      .motivation { padding: 24px; }
+    }
+
+    /* ===== RESPONSIVE — PHONE ===== */
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .header { padding: 40px 0 28px; }
+      .header__photo-wrapper { width: 120px; height: 120px; margin-bottom: 20px; }
+      .header__name { font-size: 1.7rem; letter-spacing: -0.02em; }
+      .header__title { font-size: 0.9rem; margin-bottom: 16px; }
+      .header__summary { font-size: 0.88rem; margin-bottom: 24px; line-height: 1.7; }
+      .header__badge { font-size: 0.72rem; padding: 5px 14px; margin-bottom: 18px; }
+
+      .section { padding: 28px 0; }
+      .section__title { font-size: 0.95rem; letter-spacing: 0.1em; margin-bottom: 20px; }
+
+      .contacts { gap: 8px; }
+      .contact-pill { font-size: 0.76rem; padding: 7px 12px; gap: 6px; }
+      .contact-pill svg { width: 14px; height: 14px; }
+      .lang-badge { font-size: 0.72rem; }
+
+      .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .skill-card { padding: 12px 14px; }
+      .skill-card__icon { font-size: 1rem; margin-bottom: 4px; }
+      .skill-card__name { font-size: 0.78rem; }
+
+      .tags { gap: 6px; }
+      .tag { font-size: 0.7rem; padding: 4px 10px; }
+      .tech-category { margin-bottom: 16px; }
+      .tech-category__label { font-size: 0.7rem; margin-bottom: 8px; }
+
+      .stats { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .stat-card { padding: 18px 12px; }
+      .stat-card__number { font-size: 1.6rem; }
+      .stat-card__label { font-size: 0.75rem; }
+
+      .highlight-card { padding: 18px; }
+      .highlight-card__title { font-size: 1rem; }
+      .highlight-card__text { font-size: 0.84rem; }
+      .highlight-card__text ul li { padding-left: 16px; }
+
+      .exp-card { padding: 18px; margin-bottom: 14px; }
+      .exp-card__role { font-size: 0.95rem; }
+      .exp-card__company { font-size: 0.84rem; }
+      .exp-card__date { font-size: 0.72rem; padding: 3px 10px; }
+      .exp-card__desc { font-size: 0.84rem; }
+      .exp-card__desc ul li { padding-left: 16px; }
+
+      .cases-grid { grid-template-columns: 1fr; gap: 12px; }
+      .case-card { padding: 18px; }
+      .case-card__title { font-size: 0.88rem; }
+      .case-card__desc { font-size: 0.78rem; }
+
+      .edu-card { padding: 18px; }
+      .edu-card__degree { font-size: 0.88rem; }
+
+      .motivation { padding: 20px; }
+      .motivation__title { font-size: 0.92rem; }
+      .motivation__text { font-size: 0.84rem; line-height: 1.8; }
+
+      .portfolio-link { font-size: 0.82rem; padding: 10px 20px; }
+      .footer { padding: 28px 0; }
+      .footer__text { font-size: 0.7rem; }
+    }
+
+    /* ===== RESPONSIVE — SMALL PHONE ===== */
+    @media (max-width: 360px) {
+      .container { padding: 0 12px; }
+      .header__name { font-size: 1.45rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .contacts { flex-direction: column; align-items: center; }
+      .contact-pill { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background effects -->
+<div class="bg-grid"></div>
+<div class="bg-orb bg-orb--1"></div>
+<div class="bg-orb bg-orb--2"></div>
+<div class="bg-orb bg-orb--3"></div>
+
+<div class="container">
+
+  <!-- ===== HEADER ===== -->
+  <header class="header fade-in">
+    <div class="header__photo-wrapper">
+      <img src="photo.png" alt="Oleksandr Yablonskyi" class="header__photo">
+    </div>
+    <div class="header__badge">Open to opportunities</div>
+    <h1 class="header__name">Oleksandr Yablonskyi</h1>
+    <p class="header__title">AI Developer · AI Automation Engineer</p>
+    <p class="header__summary">
+      Over 3+ years of hands-on experience building and deploying AI-powered solutions into production business environments. Deep practical expertise with LLM models (GPT, Claude, Gemini, LLaMA & others), designing multi-agent AI systems, building RAG pipelines, developing AI-powered bots & applications, and end-to-end automation with n8n/Make. Full cycle: from requirements analysis to deployment and support.
+    </p>
+
+    <div class="contacts">
+      <a href="mailto:sasharobotua@gmail.com" class="contact-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        sasharobotua@gmail.com
+      </a>
+      <a href="tel:+380994097449" class="contact-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.42 19.42 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +380 99 409 7449
+      </a>
+      <a href="https://t.me/Sasha243646" class="contact-pill" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.065-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.429-.008-1.252-.242-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.141.12.098.153.229.168.327.016.098.036.322.02.496z"/></svg>
+        @Sasha243646
+      </a>
+      <span class="contact-pill">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        Ukraine, Kyiv
+      </span>
+    </div>
+    <div class="lang-badge">🌐 English — B1 · Ukrainian — Native</div>
+  </header>
+
+  <div class="divider"></div>
+
+  <!-- ===== AI DEVELOPMENT HIGHLIGHT ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">AI Development</h2>
+
+    <div class="highlight-card">
+      <div class="highlight-card__title">
+        <span>🧠</span> Core AI Development Expertise
+      </div>
+      <div class="highlight-card__text">
+        <p>3+ years of hands-on experience designing, building, and deploying AI-powered applications and systems using generative AI models (GPT, Claude, Gemini, LLaMA & others). Deep understanding of NLP principles, LLM architecture, and production-grade AI system design. Extensive experience with platforms and APIs from OpenAI, Anthropic, Google DeepMind, Meta AI, Mistral AI, xAI, and other leading AI companies.</p>
+        <ul>
+          <li>Architecting and developing end-to-end AI applications — from concept and system design to production deployment</li>
+          <li>Building multi-agent AI systems with custom orchestration, tool usage, and inter-agent communication</li>
+          <li>Developing RAG (Retrieval-Augmented Generation) systems with vector search and knowledge base indexing</li>
+          <li>Designing and optimizing complex prompts for diverse business domains — sales, analytics, support, content generation</li>
+          <li>Building AI-powered Telegram & Instagram bots with vision, natural language processing, and CRM integrations</li>
+          <li>Working with large-scale text datasets, ETL pipelines, web scraping, and data processing for AI training/context</li>
+          <li>Full-stack AI development using Python, JavaScript/TypeScript, Node.js, and AI platform APIs</li>
+          <li>AI-assisted coding with Claude Code, Antigravity, Cursor, and Codex for rapid development</li>
+          <li>Developing MCP (Model Context Protocol) servers for extended AI tool capabilities</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== KEY EXPERTISE ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Key Expertise</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card__icon">🧠</div>
+        <div class="skill-card__name">AI Application Development</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🤖</div>
+        <div class="skill-card__name">Multi-Agent AI Systems</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🔌</div>
+        <div class="skill-card__name">MCP Servers</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">📚</div>
+        <div class="skill-card__name">RAG & Knowledge Indexing</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">⚙️</div>
+        <div class="skill-card__name">AI Workflow Orchestration</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🔗</div>
+        <div class="skill-card__name">CRM & Service Integrations</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🕷️</div>
+        <div class="skill-card__name">Web Scraping & ETL</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🌐</div>
+        <div class="skill-card__name">Browser Automation</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🛠️</div>
+        <div class="skill-card__name">n8n Automations</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">📊</div>
+        <div class="skill-card__name">AI Agents & Bots</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🔑</div>
+        <div class="skill-card__name">API Integrations</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">📝</div>
+        <div class="skill-card__name">Python / JavaScript / TypeScript</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== TECHNOLOGIES ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Technologies</h2>
+
+    <div class="tech-category">
+      <div class="tech-category__label">AI & LLM</div>
+      <div class="tags">
+        <span class="tag tag--accent">GPT</span>
+        <span class="tag tag--accent">Claude</span>
+        <span class="tag tag--accent">Gemini</span>
+        <span class="tag tag--accent">LLaMA</span>
+        <span class="tag tag--accent">Prompt Engineering</span>
+        <span class="tag">Multi-Agent Systems</span>
+        <span class="tag">MCP Servers</span>
+        <span class="tag">RAG</span>
+        <span class="tag">Vector Search</span>
+        <span class="tag">NLP</span>
+        <span class="tag">LangChain</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">AI Companies & Platforms</div>
+      <div class="tags">
+        <span class="tag tag--accent">OpenAI</span>
+        <span class="tag tag--accent">Anthropic</span>
+        <span class="tag tag--accent">Google DeepMind</span>
+        <span class="tag">Microsoft</span>
+        <span class="tag">NVIDIA</span>
+        <span class="tag">Meta AI</span>
+        <span class="tag">Amazon (AWS)</span>
+        <span class="tag">xAI</span>
+        <span class="tag">IBM</span>
+        <span class="tag">Databricks</span>
+        <span class="tag">Hugging Face</span>
+        <span class="tag">Cohere</span>
+        <span class="tag">Scale AI</span>
+        <span class="tag">Mistral AI</span>
+        <span class="tag">ElevenLabs</span>
+        <span class="tag">Runway</span>
+        <span class="tag">Midjourney</span>
+        <span class="tag">DeepL</span>
+        <span class="tag">Character.AI</span>
+        <span class="tag">Perplexity AI</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">Automation</div>
+      <div class="tags">
+        <span class="tag tag--accent">n8n</span>
+        <span class="tag tag--accent">Make (Integromat)</span>
+        <span class="tag">Zapier</span>
+        <span class="tag">Pipedream</span>
+        <span class="tag">API</span>
+        <span class="tag">OAuth</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">Development</div>
+      <div class="tags">
+        <span class="tag tag--accent">Python</span>
+        <span class="tag tag--accent">TypeScript</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express.js</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">Data & Databases</div>
+      <div class="tags">
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">Airtable</span>
+        <span class="tag">Google Sheets</span>
+        <span class="tag">ETL</span>
+        <span class="tag">Web Scraping</span>
+        <span class="tag">PDF Parsing</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">Browser Automation</div>
+      <div class="tags">
+        <span class="tag">Playwright</span>
+        <span class="tag">Puppeteer</span>
+        <span class="tag">Selenium</span>
+      </div>
+    </div>
+
+    <div class="tech-category">
+      <div class="tech-category__label">Services & Integrations</div>
+      <div class="tags">
+        <span class="tag">HubSpot</span>
+        <span class="tag">KeyCRM</span>
+        <span class="tag">Kommo</span>
+        <span class="tag">Bitrix24</span>
+        <span class="tag">Stripe</span>
+        <span class="tag">Telegram</span>
+        <span class="tag">Instagram</span>
+        <span class="tag">ActiveCampaign</span>
+        <span class="tag">Mailchimp</span>
+        <span class="tag">Klaviyo</span>
+        <span class="tag">ZohoCRM</span>
+        <span class="tag">Facebook</span>
+        <span class="tag">Jira</span>
+        <span class="tag">Confluence</span>
+        <span class="tag">Slack</span>
+        <span class="tag">Notion</span>
+        <span class="tag">Binotel</span>
+        <span class="tag">Phonet</span>
+        <span class="tag">RingoStat</span>
+        <span class="tag">WhatsApp API</span>
+        <span class="tag">Twilio</span>
+        <span class="tag">Pipedrive</span>
+        <span class="tag">Monday.com</span>
+        <span class="tag">ClickUp</span>
+        <span class="tag">Calendly</span>
+        <span class="tag">WordPress</span>
+        <span class="tag">Shopify</span>
+        <span class="tag">WooCommerce</span>
+        <span class="tag">DataForSEO</span>
+        <span class="tag">and more</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== STATS ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">By the Numbers</h2>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-card__number">50+</div>
+        <div class="stat-card__label">Projects Delivered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">3+</div>
+        <div class="stat-card__label">Years in AI & LLM</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">1000+</div>
+        <div class="stat-card__label">Hours of Automation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card__number">$10K</div>
+        <div class="stat-card__label">Max Project Budget</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Experience</h2>
+
+    <!-- Make AI -->
+    <div class="exp-card">
+      <div class="exp-card__header">
+        <div>
+          <div class="exp-card__role">AI Developer & Solutions Engineer</div>
+          <div class="exp-card__company">Make AI</div>
+        </div>
+        <span class="exp-card__date">April 2025 — March 2026</span>
+      </div>
+      <div class="exp-card__desc">
+        <ul>
+          <li>Led end-to-end AI development projects: from requirements analysis and system architecture to deployment and post-launch support</li>
+          <li>Designed and built multi-agent AI systems with custom orchestration logic and tool integrations for specific business domains</li>
+          <li>Developed RAG systems and knowledge bases for contextual, domain-specific AI responses</li>
+          <li>Built AI-powered bots for Telegram and Instagram with vision capabilities, natural language processing, and CRM integration</li>
+          <li>Integrated AI solutions with CRMs, spreadsheets, messengers, and external APIs</li>
+          <li>Developed complex automation workflows using n8n, Make, Python, and JavaScript</li>
+          <li>Processed large-scale text datasets — ETL pipelines, web scraping, PDF parsing</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Shevtsov AI -->
+    <div class="exp-card">
+      <div class="exp-card__header">
+        <div>
+          <div class="exp-card__role">Head of AI Automation Technical Department</div>
+          <div class="exp-card__company">Shevtsov AI</div>
+        </div>
+        <span class="exp-card__date">September 2024 — March 2026</span>
+      </div>
+      <div class="exp-card__desc">
+        <ul>
+          <li>Managed a team of 4 AI developers, overseeing architecture decisions and code quality</li>
+          <li>Designed AI strategies and system architectures for client projects of varying complexity</li>
+          <li>Built integrations between CRMs, spreadsheets, messengers, APIs, and internal systems</li>
+          <li>Developed AI solutions for sales automation, analytics, operations, recruiting, and reporting</li>
+          <li>Utilized Make, n8n, Python, JavaScript, and browser automation tools across all projects</li>
+          <li>Mentored the team on effective AI development practices and prompt engineering techniques</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Upwork -->
+    <div class="exp-card">
+      <div class="exp-card__header">
+        <div>
+          <div class="exp-card__role">AI & Automation Engineer</div>
+          <div class="exp-card__company">Upwork (Freelance)</div>
+        </div>
+        <span class="exp-card__date">September 2022 — October 2024</span>
+      </div>
+      <div class="exp-card__desc">
+        <p>Specialist in AI-powered automation and integration engineering with 1000+ hours of experience optimizing business processes, integrating AI tools, and scaling workflows for international clients.</p>
+        <ul>
+          <li>Developed and deployed AI solutions (OpenAI, Claude, LangChain) and API integrations for various businesses</li>
+          <li>Built intelligent automation workflows for marketing funnels and lead processing</li>
+          <li>Marketing automation: ActiveCampaign, HubSpot, HighLevel, Mailchimp, Klaviyo</li>
+          <li>CRM systems: Pipedrive, Zoho CRM, HubSpot</li>
+          <li>Integration platforms: Make (Integromat), Zapier, n8n, Pipedream</li>
+          <li>No-code/low-code tools: Airtable, Softr, Glide, FlutterFlow</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Project Simple -->
+    <div class="exp-card">
+      <div class="exp-card__header">
+        <div>
+          <div class="exp-card__role">No-Code Developer</div>
+          <div class="exp-card__company">Project Simple</div>
+        </div>
+        <span class="exp-card__date">November 2023 — May 2024</span>
+      </div>
+      <div class="exp-card__desc">
+        <ul>
+          <li>Developed bi-directional integration and real-time synchronization between Jira and Project Simple</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Teaching -->
+    <div class="exp-card">
+      <div class="exp-card__header">
+        <div>
+          <div class="exp-card__role">Lecturer — n8n Automation & AI Course</div>
+          <div class="exp-card__company">Make AI</div>
+        </div>
+        <span class="exp-card__date">2025 — 2026</span>
+      </div>
+      <div class="exp-card__desc">
+        <ul>
+          <li>Delivered hands-on courses on business process automation using n8n and AI integrations</li>
+          <li>Taught building integrations, working with APIs, and creating multi-step automation scenarios</li>
+          <li>Developed training materials, step-by-step guides, and video lessons</li>
+          <li>Trained participants on effective AI development and prompt engineering techniques</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== CASES ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Selected Projects</h2>
+    <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 24px; font-style: italic;">⚡ This is only a selection of projects completed in the last 4 months. Feel free to reach out for more details.</p>
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-card__title">📞 AI Call Quality Control System</div>
+        <div class="case-card__desc">
+          End-to-end call analysis system for sales teams: audio transcription → AI-powered analysis against custom quality metrics → automated reports and actionable recommendations. Custom-tuned prompts for different business verticals.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">Assembly</span>
+          <span class="tag">AI Agents</span>
+          <span class="tag">Airtable</span>
+          <span class="tag">Make/n8n</span>
+          <span class="tag">Binotel</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">🔥 AI Support Consultant (RAG Bot)</div>
+        <div class="case-card__desc">
+          Telegram bot with RAG system for technical support. AI Vision identifies equipment models from photos, searches the knowledge base, and provides answers from technical documentation. Automatic handoff to human agent when needed.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">RAG</span>
+          <span class="tag">AI Vision</span>
+          <span class="tag">Telegram</span>
+          <span class="tag">Custom AI Logic</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">📈 SEO Automation (Multi-Agent System)</div>
+        <div class="case-card__desc">
+          Full-cycle SEO content pipeline: keyword analysis → strategy generation → multi-agent article creation (Claude, GPT, Gemini working together) → auto-publishing to WordPress. Each agent has a specialized role in the pipeline.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">Multi-Agent</span>
+          <span class="tag">DataForSEO</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">AI Orchestration</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">💎 AI Instagram Bot (Jewelry Company)</div>
+        <div class="case-card__desc">
+          Instagram Direct bot: AI Vision recognizes jewelry from photos/videos, searches the product database, carries on natural conversation, and nurtures leads toward conversion. Custom AI behavior for sales-oriented communication.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">AI Vision</span>
+          <span class="tag">Instagram API</span>
+          <span class="tag">CRM</span>
+          <span class="tag">Sales AI</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">🎯 AI-Powered Lead Generation Agent</div>
+        <div class="case-card__desc">
+          Automated scraping of 300+ job postings/day from 5 platforms. AI generates personalized outreach emails, manages ongoing email conversations, and qualifies leads before handing off to a sales manager.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">Scraping</span>
+          <span class="tag">AI Personalization</span>
+          <span class="tag">Email</span>
+          <span class="tag">ETL</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">🤝 Claryon Bot (Jira + Confluence + Slack)</div>
+        <div class="case-card__desc">
+          AI project management assistant: full Jira/Confluence integration, Slack-based interaction, automatic attendance in Google Meet/Zoom calls with AI-generated task creation and meeting summaries.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag">Jira</span>
+          <span class="tag">Confluence</span>
+          <span class="tag">Slack</span>
+          <span class="tag">Google Meet</span>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-card__title">📊 Financial Markets Technical Analysis Bot</div>
+        <div class="case-card__desc">
+          AI-powered bot for technical analysis of crypto, forex, stocks, and indices: analyzes market structure, price patterns, and generates actionable trading insights. Relevant experience in the financial sector.
+        </div>
+        <div class="case-card__tags">
+          <span class="tag tag--accent">Finance</span>
+          <span class="tag tag--accent">Trading</span>
+          <span class="tag">Technical Analysis</span>
+          <span class="tag">AI</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 24px;">
+      <a href="https://docs.google.com/document/d/1hPCznQHA5h3gcnjaWBXtSy866U8mXaNwAVQG__GfsAw/edit?usp=drivesdk" class="portfolio-link" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Full Project Portfolio →
+      </a>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== EDUCATION ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Education</h2>
+    <div class="edu-card">
+      <div class="edu-card__degree">Automation, Computer-Integrated Technologies & Robotics</div>
+      <div class="edu-card__school">National Aviation University (NAU / KAI)</div>
+      <div class="edu-card__meta">3rd year · Currently enrolled</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== MOTIVATION ===== -->
+  <section class="section fade-in">
+    <h2 class="section__title">Cover Letter</h2>
+
+    <div class="motivation">
+      <div class="motivation__title">Motivation Letter</div>
+      <div class="motivation__text">
+        <p>
+          Over the past 3+ years, I have been actively building and deploying AI-powered solutions into real business environments. I have deep hands-on experience with LLM models (GPT, Claude, Gemini & others), local models, and I continuously stay on top of the latest advancements in AI development and engineering.
+        </p>
+        <p>
+          My core strength lies not just in understanding AI models, but in building complete, production-grade AI systems — from designing multi-agent architectures and RAG pipelines to developing AI-powered bots with vision capabilities, natural language processing, and seamless CRM integrations. I have delivered 50+ projects spanning sales automation, analytics, content generation, lead nurturing, and technical support.
+        </p>
+        <p>
+          I have extensive experience with n8n — having both delivered dozens of automation projects on this platform and taught hands-on courses on it. I build complex multi-step scenarios, API integrations, and AI-driven workflows that directly impact business outcomes.
+        </p>
+        <p>
+          What sets me apart is that I don't just write prompts — I architect and build entire AI systems: from designing the system architecture and orchestrating multiple AI agents to testing, optimizing, and deploying into production. I am eager to bring this expertise to your team, share knowledge, and contribute to building best-in-class AI solutions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p class="footer__text">© 2026 Oleksandr Yablonskyi · AI Developer & Automation Engineer</p>
+  </footer>
+
+</div>
+
+<script>
+  // Intersection Observer for scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+
+  // Subtle parallax on mouse move for orbs
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    document.querySelectorAll('.bg-orb').forEach((orb, i) => {
+      const factor = (i + 1) * 0.4;
+      orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+    });
+  });
+</script>
+
+</body>
+</html>
